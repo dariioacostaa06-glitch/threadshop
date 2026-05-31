@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ThreadShop — Moda & Accesorios</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { inter: ['Inter', 'sans-serif'] },
+          colors: { accent: '#f43f5e' }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);} }
+    .fade-in { animation: fadeIn 0.35s ease forwards; }
+    .product-card:hover .hover-overlay { opacity:1; }
+    .hover-overlay { transition: opacity 0.25s; }
+    .size-btn.selected { background:#f43f5e; color:#fff; border-color:#f43f5e; }
+    .filter-btn.active { background:#f43f5e; color:#fff; border-color:#f43f5e; }
+    ::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:#111;}::-webkit-scrollbar-thumb{background:#f43f5e;border-radius:3px;}
+    .notify-btn.notified { background:#f43f5e22; color:#f43f5e; border-color:#f43f5e; }
+    .look-card:hover img { transform: scale(1.06); }
+    .look-card img { transition: transform 0.5s ease; }
+  </style>
+</head>
+<body class="bg-[#0a0a0a] text-white">
+
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-[#0a0a0a]/90 backdrop-blur border-b border-white/5">
+  <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+    <a href="#" class="text-xl font-black tracking-tight">Thread<span class="text-accent">Shop</span></a>
+    <div class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-400">
+      <a href="#novedades" class="hover:text-white transition">Novedades</a>
+      <a href="#catalogo" class="hover:text-white transition">Catálogo</a>
+      <a href="#tallas" class="hover:text-white transition">Guía de tallas</a>
+      <a href="#look" class="hover:text-white transition">Tu Look</a>
+    </div>
+    <button class="bg-accent text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-rose-400 transition">Contactar</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="relative min-h-[90vh] flex items-end overflow-hidden">
+  <img src="img/hero.webp" alt="Hero" class="absolute inset-0 w-full h-full object-cover opacity-40" />
+  <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/30 to-transparent"></div>
+  <div class="relative max-w-7xl mx-auto px-4 pb-20 w-full">
+    <span class="inline-block bg-accent/20 text-accent text-xs font-semibold px-3 py-1 rounded-full mb-4 border border-accent/30">Nueva colección</span>
+    <h1 class="text-6xl md:text-8xl font-black leading-none mb-4">Viste tu<br/><span class="text-accent">historia.</span></h1>
+    <p class="text-gray-300 text-lg max-w-md mb-8">Moda que habla por ti. Colecciones curadas, tallas para todos, entrega en 24-48h.</p>
+    <div class="flex gap-3 flex-wrap">
+      <a href="#catalogo" class="bg-accent hover:bg-rose-400 text-white font-bold px-6 py-3 rounded-full transition">Ver colección</a>
+      <a href="#tallas" class="border border-white/20 hover:border-accent text-white font-semibold px-6 py-3 rounded-full transition">Guía de tallas →</a>
+    </div>
+  </div>
+</section>
+
+<!-- NOVEDADES / LOOKS -->
+<section id="novedades" class="max-w-7xl mx-auto px-4 py-20">
+  <div class="flex items-end justify-between mb-8">
+    <div>
+      <span class="text-xs text-accent font-semibold tracking-widest uppercase">Temporada SS25</span>
+      <h2 class="text-3xl font-black mt-1">Looks de la semana</h2>
+    </div>
+    <a href="#catalogo" class="text-sm text-gray-400 hover:text-accent transition">Ver todo →</a>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <div class="look-card relative rounded-2xl overflow-hidden h-96 bg-white/5 cursor-pointer group">
+      <img src="img/look1.webp" alt="Look 1" class="w-full h-full object-cover opacity-70" onerror="this.classList.add('hidden')" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-5">
+        <div>
+          <span class="text-xs font-semibold text-accent">Casual Chic</span>
+          <p class="font-bold text-lg mt-0.5">Look Primavera</p>
+          <p class="text-gray-300 text-sm">Desde 80€</p>
+        </div>
+      </div>
+    </div>
+    <div class="look-card relative rounded-2xl overflow-hidden h-96 bg-white/5 cursor-pointer sm:mt-8">
+      <img src="img/look2.webp" alt="Look 2" class="w-full h-full object-cover opacity-70" onerror="this.classList.add('hidden')" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-5">
+        <div>
+          <span class="text-xs font-semibold text-accent">Street Style</span>
+          <p class="font-bold text-lg mt-0.5">Urban Mix</p>
+          <p class="text-gray-300 text-sm">Desde 65€</p>
+        </div>
+      </div>
+    </div>
+    <div class="look-card relative rounded-2xl overflow-hidden h-96 bg-white/5 cursor-pointer">
+      <img src="img/look3.webp" alt="Look 3" class="w-full h-full object-cover opacity-70" onerror="this.classList.add('hidden')" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-5">
+        <div>
+          <span class="text-xs font-semibold text-accent">Elegante</span>
+          <p class="font-bold text-lg mt-0.5">Night Out</p>
+          <p class="text-gray-300 text-sm">Desde 79€</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOG -->
+<section id="catalogo" class="bg-white/2 border-y border-white/5 py-20">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+      <h2 class="text-3xl font-black">Catálogo</h2>
+      <div class="flex flex-wrap gap-2">
+        <button onclick="filterProducts('')" class="filter-btn active text-xs font-semibold px-4 py-2 rounded-full border border-white/10 transition" data-cat="">Todos</button>
+        <button onclick="filterProducts('Tops')" class="filter-btn text-xs font-semibold px-4 py-2 rounded-full border border-white/10 hover:border-accent/50 bg-white/5 transition" data-cat="Tops">Tops</button>
+        <button onclick="filterProducts('Pantalones')" class="filter-btn text-xs font-semibold px-4 py-2 rounded-full border border-white/10 hover:border-accent/50 bg-white/5 transition" data-cat="Pantalones">Pantalones</button>
+        <button onclick="filterProducts('Vestidos')" class="filter-btn text-xs font-semibold px-4 py-2 rounded-full border border-white/10 hover:border-accent/50 bg-white/5 transition" data-cat="Vestidos">Vestidos</button>
+        <button onclick="filterProducts('Accesorios')" class="filter-btn text-xs font-semibold px-4 py-2 rounded-full border border-white/10 hover:border-accent/50 bg-white/5 transition" data-cat="Accesorios">Accesorios</button>
+        <button onclick="filterProducts('Calzado')" class="filter-btn text-xs font-semibold px-4 py-2 rounded-full border border-white/10 hover:border-accent/50 bg-white/5 transition" data-cat="Calzado">Calzado</button>
+      </div>
+    </div>
+    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
+  </div>
+</section>
+
+<!-- SIZE GUIDE -->
+<section id="tallas" class="max-w-7xl mx-auto px-4 py-20">
+  <div class="grid md:grid-cols-2 gap-12 items-center max-w-4xl mx-auto">
+    <div>
+      <span class="text-xs text-accent font-semibold tracking-widest uppercase">Sin adivinar</span>
+      <h2 class="text-3xl font-black mt-2 mb-3">Calculadora de talla</h2>
+      <p class="text-gray-400 mb-8">Introduce tu altura y peso y te decimos qué talla es la tuya. Sin devoluciones por error de talla.</p>
+      <div class="space-y-4">
+        <div>
+          <label class="text-sm font-semibold text-gray-300 mb-2 block">Altura <span class="text-accent" id="heightVal">170</span> cm</label>
+          <input id="heightInput" type="range" min="140" max="210" value="170" oninput="document.getElementById('heightVal').textContent=this.value;calcSize()" class="w-full accent-rose-500" />
+          <div class="flex justify-between text-xs text-gray-500 mt-1"><span>140cm</span><span>210cm</span></div>
+        </div>
+        <div>
+          <label class="text-sm font-semibold text-gray-300 mb-2 block">Peso <span class="text-accent" id="weightVal">65</span> kg</label>
+          <input id="weightInput" type="range" min="40" max="130" value="65" oninput="document.getElementById('weightVal').textContent=this.value;calcSize()" class="w-full accent-rose-500" />
+          <div class="flex justify-between text-xs text-gray-500 mt-1"><span>40kg</span><span>130kg</span></div>
+        </div>
+        <div>
+          <label class="text-sm font-semibold text-gray-300 mb-2 block">Género</label>
+          <div class="flex gap-3">
+            <button onclick="setGender('M')" id="genderM" class="flex-1 border border-accent bg-accent/15 text-accent font-semibold py-2 rounded-xl text-sm transition">Mujer</button>
+            <button onclick="setGender('H')" id="genderH" class="flex-1 border border-white/10 bg-white/5 text-gray-300 font-semibold py-2 rounded-xl text-sm transition">Hombre</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div id="sizeResult" class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center fade-in">
+        <p class="text-sm text-gray-400 mb-2">Tu talla recomendada es</p>
+        <div id="sizeBadge" class="text-8xl font-black text-accent mb-4">M</div>
+        <p id="sizeExplain" class="text-gray-300 text-sm mb-6">Talla estándar para tu complexión. Recomendamos pedir tu talla habitual en nuestros cortes regulares.</p>
+        <div class="grid grid-cols-4 gap-2 text-xs">
+          <div class="bg-white/5 rounded-xl p-3 text-center"><span class="text-gray-400 block">XS</span><span>140-155cm</span><span class="block text-gray-500">40-50kg</span></div>
+          <div id="highlight-S" class="rounded-xl p-3 text-center border border-white/10"><span class="text-gray-400 block">S</span><span>155-165cm</span><span class="block text-gray-500">50-62kg</span></div>
+          <div id="highlight-M" class="bg-accent/20 border border-accent/50 rounded-xl p-3 text-center"><span class="text-accent block">M</span><span>165-175cm</span><span class="block text-gray-400">62-75kg</span></div>
+          <div id="highlight-L" class="rounded-xl p-3 text-center border border-white/10"><span class="text-gray-400 block">L</span><span>175-185cm</span><span class="block text-gray-500">75-90kg</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTFIT BUILDER -->
+<section id="look" class="bg-white/2 border-y border-white/5 py-20">
+  <div class="max-w-3xl mx-auto px-4">
+    <div class="text-center mb-10">
+      <span class="text-xs text-accent font-semibold tracking-widest uppercase">Estilismo</span>
+      <h2 class="text-3xl font-black mt-2">Crea tu look</h2>
+      <p class="text-gray-400 mt-2">Combina 3 prendas y descubre el nombre de tu estilo.</p>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-6">
+      <div>
+        <h3 class="text-sm font-semibold text-gray-400 mb-3">1. PARTE SUPERIOR</h3>
+        <div class="space-y-2" id="topPicker">
+          <button onclick="pickOutfit('top','Camiseta básica','casual')" class="outfit-btn w-full border border-white/10 hover:border-accent/50 bg-white/5 hover:bg-accent/10 rounded-xl px-4 py-3 text-left text-sm transition" data-key="top" data-style="casual">Camiseta básica — 25€</button>
+          <button onclick="pickOutfit('top','Sudadera','urban')" class="outfit-btn w-full border border-white/10 hover:border-accent/50 bg-white/5 hover:bg-accent/10 rounded-xl px-4 py-3 text-left text-sm transition" data-key="top" data-style="urban">Sudadera — 45€</button>
+          <button onclick="pickOutfit('top','Camisa elegante','formal')" class="outfit-btn w-full border border-white/10 hover:border-accent/50 bg-white/5 hover:bg-accent/10 rounded-xl px-4 py-3 text-left text-sm transition" data-key="top" data-style="formal">Camisa elegante — 55€</button>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-gray-400 mb-3">2. PARTE INFERIOR</h3>
+        <div class="space-y-2">
+          <button onclick="pickOutfit('bottom','Jeans slim','urban')" class="outfit-btn w-full border border-white/10 hover:border-accent/50 bg-white/5 hover:bg-accent/10 rounded-xl px-4 py-3 text-left text-sm transition" data-key="bottom" data-style="urban">Jeans slim — 55€</button>
+          <button onclick="pickOutfit('bottom','Vestido floral','chic')" class="outfit-btn w-full border border-white/10 hover:border-accent/50 bg-white/5 hover:bg-accent/10 rounded-xl px-4 py-3 text-left text-sm transition" data-key="bottom" data-style="chic">Vestido floral — 79€</button>
+          <button onclick="pickOutfit('bottom','Pantalón chino','formal')" class="outfit-btn w-full border border-white/10 hover:border-accent/50 bg-white/5 hover:bg-accent/10 rounded-xl px-4 py-3 text-left text-sm transition" data-key="bottom" data-style="formal">Pantalón chino — 49€</button>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-gray-400 mb-3">3. ACCESORIO</h3>
+        <div class="space-y-2">
+          <button onclick="pickOutfit('acc','Zapatillas','urban')" class="outfit-btn w-full border border-white/10 hover:border-accent/50 bg-white/5 hover:bg-accent/10 rounded-xl px-4 py-3 text-left text-sm transition" data-key="acc" data-style="urban">Zapatillas — 89€</button>
+          <button onclick="pickOutfit('acc','Bolso mini','chic')" class="outfit-btn w-full border border-white/10 hover:border-accent/50 bg-white/5 hover:bg-accent/10 rounded-xl px-4 py-3 text-left text-sm transition" data-key="acc" data-style="chic">Bolso mini — 65€</button>
+          <button onclick="pickOutfit('acc','Cinturón de piel','formal')" class="outfit-btn w-full border border-white/10 hover:border-accent/50 bg-white/5 hover:bg-accent/10 rounded-xl px-4 py-3 text-left text-sm transition" data-key="acc" data-style="formal">Cinturón de piel — 39€</button>
+        </div>
+      </div>
+    </div>
+    <div id="outfitResult" class="hidden mt-8 bg-white/5 border border-white/10 rounded-2xl p-6 text-center fade-in">
+      <p class="text-xs text-gray-400 mb-2">Tu look se llama</p>
+      <h3 id="lookName" class="text-3xl font-black text-accent mb-2"></h3>
+      <p id="lookDesc" class="text-gray-300 text-sm mb-4"></p>
+      <div class="flex justify-center gap-6 text-sm">
+        <div><span class="text-gray-400">Selección:</span> <span id="lookItems" class="font-semibold"></span></div>
+        <div><span class="text-gray-400">Total:</span> <span id="lookTotal" class="font-bold text-accent"></span></div>
+      </div>
+      <button onclick="resetOutfit()" class="mt-4 text-xs text-gray-500 hover:text-accent transition">Volver a crear →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/5 py-10">
+  <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+    <span class="font-black text-white text-lg">Thread<span class="text-accent">Shop</span></span>
+    <span>Desarrollado por <span style="color:#f43f5e" class="font-semibold">PuntoZero Solutions</span></span>
+    <span>© 2025 ThreadShop. Todos los derechos reservados.</span>
+  </div>
+</footer>
+
+<script>
+const products = [
+  { id:1, name:'Camiseta básica', cat:'Tops', price:25, sizes:['XS','S','M','L','XL'], img:'img/tshirt.webp', new:true },
+  { id:2, name:'Jeans slim', cat:'Pantalones', price:55, sizes:['S','M','L','XL'], img:'img/jeans.webp', new:false },
+  { id:3, name:'Vestido floral', cat:'Vestidos', price:79, sizes:['XS','S','M','L'], img:'img/dress.webp', new:true },
+  { id:4, name:'Sudadera urbana', cat:'Tops', price:45, sizes:['S','M','L','XL','XXL'], img:'img/hoodie.webp', new:false },
+  { id:5, name:'Zapatillas urban', cat:'Calzado', price:89, sizes:['36','37','38','39','40','41','42'], img:'img/shoes.webp', new:true },
+  { id:6, name:'Bolso mini', cat:'Accesorios', price:65, sizes:['Única'], img:'img/bag.webp', new:true },
+  { id:7, name:'Gafas de sol', cat:'Accesorios', price:35, sizes:['Única'], img:'img/glasses.webp', new:false },
+  { id:8, name:'Cinturón de piel', cat:'Accesorios', price:39, sizes:['S/M','L/XL'], img:'img/belt.webp', new:false },
+];
+const selectedSizes = {};
+const notified = {};
+let currentCat = '';
+
+function renderProducts() {
+  const grid = document.getElementById('productGrid');
+  const filtered = currentCat ? products.filter(p => p.cat === currentCat) : products;
+  grid.innerHTML = filtered.map(p => `
+    <div class="product-card bg-white/5 border border-white/10 hover:border-accent/40 rounded-2xl overflow-hidden transition group">
+      <div class="relative h-48 bg-white/5 overflow-hidden">
+        <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover opacity-70 group-hover:scale-105 transition duration-500" onerror="this.style.display='none'" />
+        ${p.new ? '<span class="absolute top-3 left-3 bg-accent text-white text-xs font-bold px-2 py-1 rounded-full">NUEVO</span>' : ''}
+        <div class="absolute top-3 right-3 hover-overlay opacity-0">
+          <button onclick="toggleNotify(${p.id})" id="notify-${p.id}" class="notify-btn ${notified[p.id]?'notified':''} border border-white/20 bg-black/60 backdrop-blur text-white text-xs px-3 py-1.5 rounded-full transition">
+            ${notified[p.id]?'✓ Avisado':'🔔 Avísame'}
+          </button>
+        </div>
+      </div>
+      <div class="p-4">
+        <span class="text-xs text-accent font-semibold">${p.cat}</span>
+        <h3 class="font-bold mt-1 mb-2">${p.name}</h3>
+        <div class="flex flex-wrap gap-1.5 mb-3">
+          ${p.sizes.map(s => `<button onclick="selectSize(${p.id},'${s}')" id="sz-${p.id}-${s}" class="size-btn ${selectedSizes[p.id]===s?'selected':''} text-xs border border-white/15 px-2.5 py-1 rounded-lg hover:border-accent/50 transition">${s}</button>`).join('')}
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-xl font-black">${p.price}€</span>
+          <button onclick="addToCart(${p.id})" class="bg-accent/15 hover:bg-accent text-accent hover:text-white text-xs font-semibold px-3 py-1.5 rounded-lg border border-accent/30 hover:border-accent transition">
+            + Cesta
+          </button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function filterProducts(cat) {
+  currentCat = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    const match = b.dataset.cat === cat;
+    b.className = `filter-btn ${match?'active bg-accent text-white border-accent':'bg-white/5 text-gray-300 border-white/10 hover:border-accent/50'} text-xs font-semibold px-4 py-2 rounded-full border transition`;
+  });
+  renderProducts();
+}
+
+function selectSize(id, size) {
+  selectedSizes[id] = selectedSizes[id] === size ? null : size;
+  renderProducts();
+}
+
+function toggleNotify(id) {
+  notified[id] = !notified[id];
+  const btn = document.getElementById(`notify-${id}`);
+  if (btn) {
+    btn.classList.toggle('notified', notified[id]);
+    btn.textContent = notified[id] ? '✓ Avisado' : '🔔 Avísame';
+    if (notified[id]) {
+      btn.classList.add('border-accent/50', 'text-accent');
+      showToast('¡Te avisaremos cuando llegue tu talla!');
+    }
+  }
+}
+
+function addToCart(id) {
+  const p = products.find(x => x.id === id);
+  if (!selectedSizes[id]) { showToast('Elige una talla primero'); return; }
+  showToast(`${p.name} (${selectedSizes[id]}) añadido a la cesta`);
+}
+
+function showToast(msg) {
+  const t = document.createElement('div');
+  t.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 bg-white text-black text-sm font-semibold px-5 py-3 rounded-full z-50 fade-in shadow-xl';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 2800);
+}
+
+// SIZE GUIDE
+let gender = 'M';
+function setGender(g) {
+  gender = g;
+  document.getElementById('genderM').className = `flex-1 border font-semibold py-2 rounded-xl text-sm transition ${g==='M'?'border-accent bg-accent/15 text-accent':'border-white/10 bg-white/5 text-gray-300'}`;
+  document.getElementById('genderH').className = `flex-1 border font-semibold py-2 rounded-xl text-sm transition ${g==='H'?'border-accent bg-accent/15 text-accent':'border-white/10 bg-white/5 text-gray-300'}`;
+  calcSize();
+}
+
+function calcSize() {
+  const h = parseInt(document.getElementById('heightInput').value);
+  const w = parseInt(document.getElementById('weightInput').value);
+  let bmi = w / ((h/100)**2);
+  let size, explain;
+  if (h < 155 || bmi < 17) { size = 'XS'; explain = 'Talla muy pequeña, silueta fina y estatura reducida.'; }
+  else if (h < 165 || bmi < 20) { size = 'S'; explain = 'Talla pequeña, corte ajustado te quedará perfecto.'; }
+  else if (h < 178 || bmi < 24) { size = 'M'; explain = 'Talla estándar. La mayoría de nuestros cortes están pensados para esta talla.'; }
+  else if (h < 188 || bmi < 28) { size = 'L'; explain = 'Talla grande. Si prefieres un corte más holgado, considera XL.'; }
+  else { size = 'XL'; explain = 'Talla extra grande. Nuestros cortes oversized te quedarán genial.'; }
+  document.getElementById('sizeBadge').textContent = size;
+  document.getElementById('sizeExplain').textContent = explain;
+  ['S','M','L'].forEach(s => {
+    const el = document.getElementById(`highlight-${s}`);
+    if (el) {
+      el.className = s === size
+        ? 'bg-accent/20 border border-accent/50 rounded-xl p-3 text-center'
+        : 'rounded-xl p-3 text-center border border-white/10';
+    }
+  });
+}
+
+// OUTFIT BUILDER
+const outfitChoices = {};
+const outfitPrices = { 'Camiseta básica':25, 'Sudadera':45, 'Camisa elegante':55, 'Jeans slim':55, 'Vestido floral':79, 'Pantalón chino':49, 'Zapatillas':89, 'Bolso mini':65, 'Cinturón de piel':39 };
+const styleNames = {
+  casual_urban_urban: { name:'Urban Chill', desc:'Desenfadado y cómodo. Perfecto para el día a día en la ciudad.' },
+  casual_chic_chic: { name:'Soft Glam', desc:'Femenino y sutil. Ideal para brunch o quedadas informales.' },
+  formal_formal_formal: { name:'Power Dressing', desc:'Autoridad y estilo. Listo para cualquier reunión importante.' },
+  urban_urban_chic: { name:'Street Chic', desc:'La fusión perfecta entre lo urbano y lo sofisticado.' },
+  default: { name:'Estilo Propio', desc:'Un look único que refleja tu personalidad. ¡Sin categorías!' },
+};
+
+function pickOutfit(slot, name, style) {
+  outfitChoices[slot] = { name, style };
+  document.querySelectorAll(`.outfit-btn[data-key="${slot}"]`).forEach(b => {
+    b.classList.toggle('border-accent', b.textContent.includes(name));
+    b.classList.toggle('bg-accent/15', b.textContent.includes(name));
+    b.classList.toggle('text-accent', b.textContent.includes(name));
+  });
+  if (outfitChoices.top && outfitChoices.bottom && outfitChoices.acc) generateLook();
+}
+
+function generateLook() {
+  const key = `${outfitChoices.top.style}_${outfitChoices.bottom.style}_${outfitChoices.acc.style}`;
+  const look = styleNames[key] || styleNames.default;
+  const items = [outfitChoices.top.name, outfitChoices.bottom.name, outfitChoices.acc.name];
+  const total = items.reduce((s,n) => s + (outfitPrices[n]||0), 0);
+  document.getElementById('lookName').textContent = look.name;
+  document.getElementById('lookDesc').textContent = look.desc;
+  document.getElementById('lookItems').textContent = items.join(' + ');
+  document.getElementById('lookTotal').textContent = total + '€';
+  document.getElementById('outfitResult').classList.remove('hidden');
+}
+
+function resetOutfit() {
+  Object.keys(outfitChoices).forEach(k => delete outfitChoices[k]);
+  document.querySelectorAll('.outfit-btn').forEach(b => {
+    b.classList.remove('border-accent','bg-accent/15','text-accent');
+  });
+  document.getElementById('outfitResult').classList.add('hidden');
+}
+
+renderProducts();
+calcSize();
+</script>
+</body>
+</html>
